@@ -58,9 +58,3 @@ jobs:
       WRT_IP: 192.168.10.1
       # 默认密码，仅供提示，修改无效
       WRT_PW: 无
-
-  clean:
-    name: CleanRelease
-    if: ${{inputs.ONLY_CONFIG}} == 'false'
-    needs: [compile]
-    uses: ./.github/workflows/CleanRelease.yml
