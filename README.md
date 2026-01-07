@@ -22,9 +22,9 @@ https://github.com/zero-dream/zerowrt-package
 
 ### 参考的项目
 
-https://github.com/VIKINGYFY/OpenWRT-CI
+VIKINGYFY: https://github.com/VIKINGYFY/OpenWRT-CI
 
-https://github.com/davidtall/OpenWRT-CI
+Davidtall: https://github.com/davidtall/OpenWRT-CI
 
 ### U-Boot
 
