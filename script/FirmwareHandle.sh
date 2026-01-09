@@ -69,6 +69,16 @@ if [ -f "$COREMARK_FILE" ]; then
 	echo ''
 fi
 
+# 修复 99_netspeedtest 相关问题
+cd "$pkgPath"
+if [ -d *"luci-app-netspeedtest"* ]; then
+	cd ./luci-app-netspeedtest/
+	sed -i '$a\exit 0' ./netspeedtest/files/99_netspeedtest.defaults
+	sed -i 's/ca-certificates/ca-bundle/g' ./speedtest-cli/Makefile
+	echo "Fixed: netspeedtest"
+	echo ''
+fi
+
 # --------------------------------------------------
 
 # 临时修复 nss-firmware 校验不通过
@@ -110,7 +120,13 @@ cd "$pkgPath"
 if [ -d *"luci-theme-argon"* ]; then
 	cd ./luci-theme-argon/
 	sed -i "/font-weight:/ { /important/! { /\/\*/! s/:.*/: var(--font-weight);/ } }" $(find ./luci-theme-argon -type f -iname "*.css")
-	sed -i "s/primary '.*'/primary '#5e72e4'/; s/'0.2'/'0.5'/; s/'none'/'bing'/; s/'600'/'normal'/" ./luci-app-argon-config/root/etc/config/argon
+	sed -i -e "s/primary '.*'/primary '#6c8eb0'/" \
+				 -e "s/dark_primary '.*'/dark_primary '#6c8eb0'/" \
+				 -e "s/'0.2'/'0.5'/" \
+				 -e "s/online_wallpaper '.*'/online_wallpaper 'bing'/" \
+				 -e "s/'600'/'normal'/" \
+				 -e "s/mode '.*'/mode 'normal'/" \
+				 ./luci-app-argon-config/root/etc/config/argon
 	echo 'Fixed: theme-argon'
 	echo ''
 fi
