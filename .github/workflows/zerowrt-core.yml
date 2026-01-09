@@ -87,7 +87,7 @@ jobs:
       - name: InitWorkflow
         run: |
           WorkflowPath="$RUNNER_TEMP/Workflow-$(uuidgen | tr -d '-')"
-          git clone --depth=1 https://github.com/zero-dream/workflow.git "$WorkflowPath/"
+          git clone --depth=1 https://github.com/zero-dream/action-workflow.git "$WorkflowPath/"
           chmod +x "$WorkflowPath/zerodream/main/init.sh"
           source "$WorkflowPath/zerodream/main/init.sh"
           # --------------------------------------------------
